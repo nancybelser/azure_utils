@@ -35,8 +35,8 @@ def get_credentials():
         secret=os.environ['AZURE_CLIENT_SECRET'],
         tenant=os.environ['AZURE_TENANT_ID']
     )
-    print("subscription", subscription_id)
-    print(credentials)
+    #print("subscription", subscription_id)
+    #print(credentials)
     return credentials, subscription_id
 
 def get_rate_card(credentials, subscription_id):
@@ -66,26 +66,28 @@ def get_consumption(credentials, subscription_id, env):
     for item in resource_client.resource_groups.list():
         name = (item.name).lower()
         rgDict[name] = {}
-        print(name)
+        #print(name)
         if bool(item.tags):
             rgDict[name] = item.tags
     #print(rgDict)
     consumption_client = ConsumptionManagementClient(credentials,subscription_id,base_url=None)
 
     scope = "\/subscriptions\/" + subscription_id + "\/"
-    print(scope)
+    #print(scope)
     date_filter ='usageStart gt '+ str('2020-02-03T00:00:00Z')
-    print(date_filter)
+    #print(date_filter)
 
     #for item in consumption_client.usage_details.list("\/subscriptions\/f34f870e-1eed-4463-9958-09d6c81278f3\/", metric='AmortizedCostMetricType'):    #for item in consumption_client.usage_details.list("\/subscriptions\/f34f870e-1eed-4463-9958-09d6c81278f3\/"):
     #for item in consumption_client.usage_details.list(scope, filter=date_filter):
     for item in consumption_client.usage_details.list(scope):
         #print(item.resource_group)
-        print(item.name + " " + item.resource_group.lower())
+        #print(item.name + " " + item.resource_group.lower())
         rg = rgDict.get(item.resource_group.lower())
-        print(rg)
+        #print(rg)
+        #print(item)
         #print(item.date_property,",", item.resource_group.lower(), ",", item.meter_id, ",", item.name, ",", item.product,",", item.quantity, ",", item.effective_price, ",", item.cost,",", item.unit_price)
-        #print (item)
+        #print(item.date_property,",", item.resource_group.lower(), ",", item.meter_details, ",", item.name, ",", item.product,",", item.consumed_service, ",", item.resource_name, ",", item.resource_location, "," ,item.unit_price, )
+        print(item.date_property,",", item.resource_group.lower(), ",", item.resource_id, ",", item.name, ",", item.product,",", item.consumed_service, ",", item.resource_name, ",", item.resource_location, ",", item.unit_price, ",", item.quantity )
 
 
 
@@ -94,8 +96,8 @@ if __name__ == "__main__":
 
     #get_rate_card(credentials, subscription_id)
     envDict = {'Infra': 'f34f870e-1eed-4463-9958-09d6c81278f3', 'Dev': '1649ee20-8f97-4941-be59-cb40e8aaafea'}
-    print(envDict)
-    print('\nShow consumption details for subscription')
+    #print(envDict)
+    #print('\nShow consumption details for subscription')
     for env in envDict.keys():
         subscription_id = envDict[env]
         get_consumption(credentials, subscription_id, env)
