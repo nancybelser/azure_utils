@@ -48,7 +48,7 @@ if __name__ == "__main__":
     credentials, subscription_id = get_credentials()
 
     #get_rate_card(credentials, subscription_id)
-    envDict = {'Infra': 'f34f870e-1eed-4463-9958-09d6c81278f3'}
+    envDict = {'Infra': ''}
     print(envDict)
     print('\nShow consumption details for subscription')
     for env in envDict.keys():
