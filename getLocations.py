@@ -36,7 +36,7 @@ def get_locations(credentials, subscription_id):
 if __name__ == "__main__":
     credentials, subscription_id = get_credentials()
     print(credentials)
-    envDict = {'Infra': 'f34f870e-1eed-4463-9958-09d6c81278f3', 'Dev': '1649ee20-8f97-4941-be59-cb40e8aaafea'}
+    envDict = {'Infra': '', 'Dev': ''}
     #print(envDict)
     for env in envDict.keys():
         subscription_id = envDict[env]
