@@ -259,7 +259,7 @@ if __name__ == "__main__":
     print(start_date, end_date)
 
     #get_rate_card(credentials, subscription_id)
-    #envDict = {'Infra': 'f34f870e-1eed-4463-9958-09d6c81278f3', 'Dev': '1649ee20-8f97-4941-be59-cb40e8aaafea'}
+    #envDict = {'Infra': '', 'Dev': ''}
     print("org", org, "org_id", org_id)
     accounts = get_subscriptions(conn, org_id)
     sub_id = accounts[0][1]
