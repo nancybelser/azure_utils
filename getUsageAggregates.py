@@ -29,7 +29,7 @@ startDate = '2020-02-05T00:00:00Z'
 endDate = '2020-02-06T00:00:00Z'
 
 DATABASE_URL = os.environ['DATABASE_URL']
-envDict = {'Azure Infra': 'f34f870e-1eed-4463-9958-09d6c81278f3', 'Azure Dev': '1649ee20-8f97-4941-be59-cb40e8aaafea'}
+envDict = {'Azure Infra': '', 'Azure Dev': ''}
 
 
 
